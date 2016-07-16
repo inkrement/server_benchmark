@@ -120,3 +120,28 @@ Threads fairness:
     execution time (avg/stddev):   7.3451/0.00
 
 ```
+
+```
+root@web3:~# fio --randrepeat=1 --ioengine=libaio --direct=1 --gtod_reduce=1 --name=test --filename=test --bs=4k --iodepth=64 --size=4G --readwrite=randrw --rwmixread=75
+test: (g=0): rw=randrw, bs=4K-4K/4K-4K/4K-4K, ioengine=libaio, iodepth=64
+fio-2.2.10
+Starting 1 process
+test: Laying out IO file(s) (1 file(s) / 4096MB)
+Jobs: 1 (f=1): [m(1)] [96.6% done] [133.6MB/45606KB/0KB /s] [34.2K/11.5K/0 iops] [eta 00m:01s]
+test: (groupid=0, jobs=1): err= 0: pid=4986: Sat Jul 16 12:06:51 2016
+  read : io=3071.7MB, bw=112770KB/s, iops=28192, runt= 27892msec
+  write: io=1024.4MB, bw=37606KB/s, iops=9401, runt= 27892msec
+  cpu          : usr=16.82%, sys=54.93%, ctx=7598, majf=0, minf=9
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=0.1%, 32=0.1%, >=64=100.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.1%, >=64=0.0%
+     issued    : total=r=786347/w=262229/d=0, short=r=0/w=0/d=0, drop=r=0/w=0/d=0
+     latency   : target=0, window=0, percentile=100.00%, depth=64
+
+Run status group 0 (all jobs):
+   READ: io=3071.7MB, aggrb=112770KB/s, minb=112770KB/s, maxb=112770KB/s, mint=27892msec, maxt=27892msec
+  WRITE: io=1024.4MB, aggrb=37606KB/s, minb=37606KB/s, maxb=37606KB/s, mint=27892msec, maxt=27892msec
+
+Disk stats (read/write):
+  vda: ios=782664/261038, merge=0/5, ticks=695730/263380, in_queue=958600, util=99.10%
+```
