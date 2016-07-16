@@ -29,6 +29,37 @@ Threads fairness:
     execution time (avg/stddev):   46.2152/0.00
 ```
 
+```
+root@stats:~# sysbench --test=cpu --cpu-max-prime=20000 --num-threads=16 run
+sysbench 0.4.12:  multi-threaded system evaluation benchmark
+
+Running the test with following options:
+Number of threads: 16
+
+Doing CPU performance benchmark
+
+Threads started!
+Done.
+
+Maximum prime number checked in CPU test: 20000
+
+
+Test execution summary:
+    total time:                          23.1121s
+    total number of events:              10000
+    total time taken by event execution: 368.6029
+    per-request statistics:
+         min:                                  4.59ms
+         avg:                                 36.86ms
+         max:                                141.14ms
+         approx.  95 percentile:              84.57ms
+
+Threads fairness:
+    events (avg/stddev):           625.0000/1.27
+    execution time (avg/stddev):   23.0377/0.04
+
+
+```
 # Memory
 
 ```
