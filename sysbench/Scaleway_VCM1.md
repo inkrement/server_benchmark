@@ -70,3 +70,53 @@ Threads fairness:
     execution time (avg/stddev):   2.6509/0.00
 
 ```
+
+# Filesystem
+
+```
+root@web3:~# sysbench --test=fileio --file-total-size=25G prepare
+sysbench 0.4.12:  multi-threaded system evaluation benchmark
+
+128 files, 204800Kb each, 25600Mb total
+Creating files for the test...
+root@web3:~# sysbench --test=fileio --file-total-size=25G --file-test-mode=rndrw --init-rng=on --max-time=300 --max-requests=0 run
+sysbench 0.4.12:  multi-threaded system evaluation benchmark
+
+Running the test with following options:
+Number of threads: 1
+Initializing random number generator from timer.
+
+
+Extra file open flags: 0
+128 files, 200Mb each
+25Gb total file size
+Block size 16Kb
+Number of random requests for random IO: 0
+Read/Write ratio for combined random IO test: 1.50
+Periodic FSYNC enabled, calling fsync() each 100 requests.
+Calling fsync() at the end of test, Enabled.
+Using synchronous I/O mode
+Doing random r/w test
+Threads started!
+Time limit exceeded, exiting...
+Done.
+
+Operations performed:  11460 Read, 7640 Write, 24431 Other = 43531 Total
+Read 179.06Mb  Written 119.38Mb  Total transferred 298.44Mb  (1018.6Kb/sec)
+   63.66 Requests/sec executed
+
+Test execution summary:
+    total time:                          300.0095s
+    total number of events:              19100
+    total time taken by event execution: 7.3451
+    per-request statistics:
+         min:                                  0.01ms
+         avg:                                  0.38ms
+         max:                                 17.92ms
+         approx.  95 percentile:               0.73ms
+
+Threads fairness:
+    events (avg/stddev):           19100.0000/0.00
+    execution time (avg/stddev):   7.3451/0.00
+
+```
