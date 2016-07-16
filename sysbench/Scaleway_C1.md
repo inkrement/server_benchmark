@@ -1,5 +1,5 @@
 # CPU
-
+```
 root@stats:~# sysbench --test=cpu --cpu-max-prime=20000 run
 sysbench 0.4.12:  multi-threaded system evaluation benchmark
 
@@ -27,7 +27,7 @@ Test execution summary:
 Threads fairness:
     events (avg/stddev):           10000.0000/0.00
     execution time (avg/stddev):   46.2152/0.00
-
+```
 
 # Memory
 
